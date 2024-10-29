@@ -404,8 +404,10 @@ class ContactAPI {
     // tension ratio is sufficient.
     LaplaceParameters p_laplace_d(p_L_d / tension_ratio, rho_d / tension_ratio);
 
-    HookeParameters p_hooke_u(nu_u, K_u, tau_s_0_u, 0);
-    HookeParameters p_hooke_d(nu_d, K_d, tau_s_0_d, 0);
+    double g_u = K_u * (1. - nu_u) / (1. + nu_u);
+    double g_d = K_d * (1. - nu_d) / (1. + nu_d);
+    HookeParameters p_hooke_u(g_u, K_u, tau_s_0_u, 0);
+    HookeParameters p_hooke_d(g_d, K_d, tau_s_0_d, 0);
 
     laplace_u.SetParameters(p_laplace_u);
     laplace_u.SetIntegrationStep(INTEGRATION_STEP);
@@ -477,8 +479,10 @@ class ContactAPI {
     // tension ratio is sufficient.
     LaplaceParameters p_laplace_d(p_L_d / tension_ratio, rho_d / tension_ratio);
 
-    HookeParameters p_hooke_u(nu_u, K_u, 0.5, 0);
-    HookeParameters p_hooke_d(nu_d, K_d, 0.5, 0);
+    double g_u = K_u * (1. - nu_u) / (1. + nu_u);
+    double g_d = K_d * (1. - nu_d) / (1. + nu_d);
+    HookeParameters p_hooke_u(g_u, K_u, 0.5, 0);
+    HookeParameters p_hooke_d(g_d, K_d, 0.5, 0);
 
     laplace_u.SetParameters(p_laplace_u);
     laplace_u.SetIntegrationStep(INTEGRATION_STEP);
@@ -557,7 +561,8 @@ class ContactUnitCellAPI {
                      double tension_inner, double tension_ud) {
 
     LaplaceParameters p_laplace_u(3.99999, 0.0);
-    HookeParameters p_hooke_u(nu, K, tau_s_0, 0);
+    double g = K * (1. - nu) / (1. + nu);
+    HookeParameters p_hooke_u(g, K, tau_s_0, 0);
 
     laplace_u.SetParameters(p_laplace_u);
     laplace_u.SetIntegrationStep(1e-4);
