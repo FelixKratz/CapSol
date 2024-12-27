@@ -1,4 +1,17 @@
 # CapSol
+## Dissertation
+This software is developed and described in the Dissertation: [Capsule Rheology and Machine Learning by Felix S. Kratz](http://dx.doi.org/10.17877/DE290R-24525).
+If you use this software in your research, please cite the following work:
+```
+@phdthesis{Kratz2024,
+  title={Capsule Rheology and Machine Learning},
+  author={Kratz, Felix Sebastian},
+  year={2024},
+  school={Technische Universit{\"a}t Dortmund},
+  doi={10.17877/DE290R-24525}
+}
+```
+
 ## Compile the CapSol Python module
 ### macOS
 * Required dependencies ([brew](https://brew.sh) needs to be installed)
